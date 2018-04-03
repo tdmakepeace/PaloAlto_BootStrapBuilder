@@ -3,23 +3,25 @@
 The following has been built to demo how to use the Bootstraping process for the Palo Alto Networks NGFW.
 
 After deploying the image, check the permission on the following files.
-#following permissions should be checked.
+
+following permissions should be checked.
 
 chmod 744 XMLBuilder/env.txt
 chmod 744 XMLBuilder/VMserver.txt
 chmod 744 run.sh
 
 
-# the tool is designed to demonstrate the simplicity or reusing a template model to speed up the deployment.
-# a few things like the deployment of the ISO images to the ESXi server are never expected to be deployed in 
-# live. but highlight the fact the bootstrapping process can be used to speed up the deployments.
-# the ISO images will work with VM or hardware.
+the tool is designed to demonstrate the simplicity or reusing a template model to speed up the deployment.
+a few things like the deployment of the ISO images to the ESXi server are never expected to be deployed in 
+live. but highlight the fact the bootstrapping process can be used to speed up the deployments.
+the ISO images will work with VM or hardware.
 
-# if you aim to use panorama to configure the servers. Option 10 is to build the bootstrap file to get the 
-# device on the network, and connect to the Panorama server.
-# you still need to configure the panorama server to accept the connection and deploy a configuration.
+if you aim to use panorama to configure the servers. Option 10 is to build the bootstrap file to get the 
+device on the network, and connect to the Panorama server.
+you still need to configure the panorama server to accept the connection and deploy a configuration.
 
-## Notes on how to adjust ##
+Notes on how to adjust 
+
 The XMLBuilder folder is where the env.txt file is to be uploaded to to build a config.
 A sub folder of the XMLBuilder is the XML-Input-Files. This is where you would upload your own templates to be 
 used.
