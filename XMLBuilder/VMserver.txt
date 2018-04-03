@@ -1,0 +1,6 @@
+#Palo Alto Networks Variables 
+#Scott Shoaf & Toby Makepeace 
+export ESX_user=paloalto
+export ESX_pass=paloalto!
+export ESX_ip=192.168.102.3
+export ESX_ds=/vmfs/volumes/581b378d-eda49d3a-ac60-1c98ec0e8204/BootstrapTest/

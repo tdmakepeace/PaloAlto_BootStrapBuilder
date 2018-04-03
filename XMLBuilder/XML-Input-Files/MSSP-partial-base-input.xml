@@ -1,0 +1,379 @@
+<config version="7.1.0" urldb="paloaltonetworks">
+  <devices>
+    <entry name="localhost.localdomain">
+      <deviceconfig>
+        <system>
+          <update-schedule>
+            <threats>
+              <recurring>
+                <daily>
+                  <at>05:00</at>
+                  <action>download-and-install</action>
+                </daily>
+              </recurring>
+            </threats>
+            <anti-virus>
+              <recurring>
+                <hourly>
+                  <at>1</at>
+                  <action>download-and-install</action>
+                </hourly>
+              </recurring>
+            </anti-virus>
+            <wildfire>
+              <recurring>
+                <every-min>
+                  <action>download-and-install</action>
+                </every-min>
+              </recurring>
+            </wildfire>
+          </update-schedule>
+        </system>
+        <setting>
+          <wildfire>
+            <report-benign-file>yes</report-benign-file>
+            <report-grayware-file>yes</report-grayware-file>
+            <file-size-limit>
+              <entry name="pe">
+                <size-limit>10</size-limit>
+              </entry>
+              <entry name="apk">
+                <size-limit>50</size-limit>
+              </entry>
+              <entry name="pdf">
+                <size-limit>1000</size-limit>
+              </entry>
+              <entry name="ms-office">
+                <size-limit>10000</size-limit>
+              </entry>
+              <entry name="jar">
+                <size-limit>10</size-limit>
+              </entry>
+              <entry name="flash">
+                <size-limit>10</size-limit>
+              </entry>
+              <entry name="MacOSX">
+                <size-limit>10</size-limit>
+              </entry>
+            </file-size-limit>
+          </wildfire>
+        </setting>
+      </deviceconfig>
+      <vsys>
+        <entry name="vsys1">
+          <service>
+            <entry name="MSSP-SSL-non-default-ports">
+              <protocol>
+                <tcp>
+                  <port>465,636,989,990,992,993,995,1514,1521,2376,2484,3269,4567,5223,5228,8443,8531,9091</port>
+                </tcp>
+              </protocol>
+              <description>$PANOS $TEMPVER</description>
+            </entry>
+          </service>
+          <rulebase>
+            <default-security-rules>
+              <rules>
+                <entry name="interzone-default">
+                  <action>deny</action>
+                  <log-start>yes</log-start>
+                  <log-end>no</log-end>
+                  <log-setting>$MSSP_LOGGING</log-setting>
+                </entry>
+              </rules>
+            </default-security-rules>
+          </rulebase>
+          <profiles>
+            <url-filtering>
+              <entry name="MSSP">
+                <action>block</action>
+                <alert>
+                  <member>abortion</member>
+                  <member>abused-drugs</member>
+                  <member>adult</member>
+                  <member>alcohol-and-tobacco</member>
+                  <member>auctions</member>
+                  <member>business-and-economy</member>
+                  <member>computer-and-internet-info</member>
+                  <member>content-delivery-networks</member>
+                  <member>copyright-infringement</member>
+                  <member>dating</member>
+                  <member>educational-institutions</member>
+                  <member>entertainment-and-arts</member>
+                  <member>extremism</member>
+                  <member>financial-services</member>
+                  <member>gambling</member>
+                  <member>games</member>
+                  <member>government</member>
+                  <member>health-and-medicine</member>
+                  <member>home-and-garden</member>
+                  <member>hunting-and-fishing</member>
+                  <member>insufficient-content</member>
+                  <member>internet-communications-and-telephony</member>
+                  <member>internet-portals</member>
+                  <member>job-search</member>
+                  <member>legal</member>
+                  <member>military</member>
+                  <member>motor-vehicles</member>
+                  <member>music</member>
+                  <member>news</member>
+                  <member>nudity</member>
+                  <member>online-storage-and-backup</member>
+                  <member>peer-to-peer</member>
+                  <member>personal-sites-and-blogs</member>
+                  <member>philosophy-and-political-advocacy</member>
+                  <member>questionable</member>
+                  <member>real-estate</member>
+                  <member>recreation-and-hobbies</member>
+                  <member>reference-and-research</member>
+                  <member>religion</member>
+                  <member>search-engines</member>
+                  <member>sex-education</member>
+                  <member>shareware-and-freeware</member>
+                  <member>shopping</member>
+                  <member>social-networking</member>
+                  <member>society</member>
+                  <member>sports</member>
+                  <member>stock-advice-and-tools</member>
+                  <member>streaming-media</member>
+                  <member>swimsuits-and-intimate-apparel</member>
+                  <member>training-and-tools</member>
+                  <member>translation</member>
+                  <member>travel</member>
+                  <member>unknown</member>
+                  <member>weapons</member>
+                  <member>web-advertisements</member>
+                  <member>web-based-email</member>
+                  <member>web-hosting</member>
+                </alert>
+                <block>
+                  <member>dynamic-dns</member>
+                  <member>hacking</member>
+                  <member>malware</member>
+                  <member>not-resolved</member>
+                  <member>parked</member>
+                  <member>phishing</member>
+                  <member>private-ip-addresses</member>
+                  <member>proxy-avoidance-and-anonymizers</member>
+                </block>
+              </entry>
+            </url-filtering>
+            <virus>
+              <entry name="MSSP">
+                <decoder>
+                  <entry name="ftp">
+                    <action>default</action>
+                    <wildfire-action>default</wildfire-action>
+                  </entry>
+                  <entry name="http">
+                    <action>default</action>
+                    <wildfire-action>default</wildfire-action>
+                  </entry>
+                  <entry name="imap">
+                    <action>default</action>
+                    <wildfire-action>default</wildfire-action>
+                  </entry>
+                  <entry name="pop3">
+                    <action>default</action>
+                    <wildfire-action>default</wildfire-action>
+                  </entry>
+                  <entry name="smb">
+                    <action>default</action>
+                    <wildfire-action>default</wildfire-action>
+                  </entry>
+                  <entry name="smtp">
+                    <action>reset-both</action>
+                    <wildfire-action>reset-both</wildfire-action>
+                  </entry>
+                </decoder>
+                <packet-capture>yes</packet-capture>
+                <description>$PANOS $TEMPVER</description>
+              </entry>
+            </virus>
+            <spyware>
+              <entry name="MSSP">
+                <rules>
+                  <entry name="Any-severity">
+                    <severity>
+                      <member>any</member>
+                    </severity>
+                    <action>
+                      <default/>
+                    </action>
+                    <threat-name>any</threat-name>
+                    <category>any</category>
+                    <packet-capture>single-packet</packet-capture>
+                  </entry>
+                </rules>
+                <botnet-domains>
+                  <packet-capture>single-packet</packet-capture>
+                  <sinkhole>
+                    <ipv4-address>$SINKHOLE_IPV4</ipv4-address>
+                    <ipv6-address>$SINKHOLE_IPV6</ipv6-address>
+                  </sinkhole>
+                  <passive-dns>yes</passive-dns>
+                  <lists>
+                    <entry name="default-paloalto-dns">
+                      <action>
+                        <sinkhole/>
+                      </action>
+                    </entry>
+                  </lists>
+                </botnet-domains>
+                <description>$PANOS $TEMPVER</description>
+              </entry>
+            </spyware>
+            <file-blocking>
+              <entry name="MSSP">
+                <rules>
+                  <entry name="Alert all Types">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>any</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <action>alert</action>
+                  </entry>
+                  <entry name="bad-files-to-block">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>hlp</member>
+                      <member>lnk</member>
+                      <member>Multi-Level-Encoding</member>
+                      <member>scr</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <action>block</action>
+                  </entry>
+                </rules>
+                <description>$PANOS $TEMPVER</description>
+              </entry>
+              <entry name="MSSP-unknownURL">
+                <rules>
+                  <entry name="PE xfer block">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>PE</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <action>block</action>
+                  </entry>
+                  <entry name="alert all types">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>any</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <action>alert</action>
+                  </entry>
+                  <entry name="WF file type block">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>apk</member>
+                      <member>dmg</member>
+                      <member>flash</member>
+                      <member>jar</member>
+                      <member>macapp</member>
+                      <member>mach-o</member>
+                      <member>msoffice</member>
+                      <member>pdf</member>
+                      <member>pkg</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <action>block</action>
+                  </entry>
+                  <entry name="bad-files-to-block">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>hlp</member>
+                      <member>lnk</member>
+                      <member>Multi-Level-Encoding</member>
+                      <member>scr</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <action>block</action>
+                  </entry>
+                </rules>
+                <description>$PANOS $TEMPVER</description>
+              </entry>
+            </file-blocking>
+            <vulnerability>
+              <entry name="MSSP">
+                <rules>
+                  <entry name="Default-all-severity">
+                    <vendor-id>
+                      <member>any</member>
+                    </vendor-id>
+                    <cve>
+                      <member>any</member>
+                    </cve>
+                    <severity>
+                      <member>any</member>
+                    </severity>
+                    <action>
+                      <default/>
+                    </action>
+                    <threat-name>any</threat-name>
+                    <host>any</host>
+                    <category>any</category>
+                    <packet-capture>single-packet</packet-capture>
+                  </entry>
+                </rules>
+                <description>$PANOS $TEMPVER</description>
+              </entry>
+            </vulnerability>
+            <wildfire-analysis>
+              <entry name="MSSP">
+                <rules>
+                  <entry name="Check-all-files">
+                    <application>
+                      <member>any</member>
+                    </application>
+                    <file-type>
+                      <member>any</member>
+                    </file-type>
+                    <direction>both</direction>
+                    <analysis>public-cloud</analysis>
+                  </entry>
+                </rules>
+                <description>$PANOS $TEMPVER</description>
+              </entry>
+            </wildfire-analysis>
+          </profiles>
+          <tag>
+            <entry name="$PANOS"/>
+            <entry name="$TEMPVER"/>
+            <entry name="ver-07.1"/>
+            <entry name="Bronze">
+              <color>color5</color>
+            </entry>
+            <entry name="Silver">
+              <color>color11</color>
+            </entry>
+            <entry name="Gold">
+              <color>color15</color>
+            </entry>
+            <entry name="$ZONE_TRUST">
+              <color>color2</color>
+            </entry>
+            <entry name="$ZONE_UNTRUST">
+              <color>color1</color>
+            </entry>
+          </tag>
+        </entry>
+      </vsys>
+    </entry>
+  </devices>
+</config>
