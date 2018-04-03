@@ -2,13 +2,9 @@
 
 The following has been built to demo how to use the Bootstraping process for the Palo Alto Networks NGFW.
 
-After deploying the image, check the permission on the following files.
+After deploying the image, run the setup script
 
-following permissions should be checked.
-
-chmod 744 XMLBuilder/env.txt
-chmod 744 XMLBuilder/VMserver.txt
-chmod 744 run.sh
+bash setup.sh
 
 
 the tool is designed to demonstrate the simplicity or reusing a template model to speed up the deployment.

@@ -12,6 +12,5 @@ mkdir Build/license
 mkdir Build/software
 chmod 744 XMLBuilder/env.txt
 chmod 744 XMLBuilder/VMserver.txt
-
-
+chmod 744 run.sh
 
